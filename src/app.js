@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geoCode')
 const forecast = require('./utils/forecast')
+const compression = require('compression');
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -12,6 +13,7 @@ const viewsPath = path.join(__dirname, '../templates/views')
 const partialPath = path.join(__dirname, '../templates/partials')
 
 app.use(express.static(htmlpath))
+app.use(compression());
 
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
